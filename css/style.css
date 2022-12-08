@@ -1,0 +1,139 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	font-family: 'Poppins', sans-serif;
+}
+.header{
+	background-color:black;
+	position:fixed;
+	top:0;
+	right:0;
+	left:0;
+	color:white;
+	z-index:100;
+	border-bottom:none !important;
+}
+.header .container .logo{
+	color:white;
+}
+.carousel-inner{
+	height:100Vh;
+	position:static;
+}
+.carousel-item img{
+	height:100vh;
+}
+.logo{
+	font-size:30px;
+	font-weight:600;
+}
+.box{
+	position:relative;
+}
+.box .cart-number{
+	position:absolute;
+	top:0;
+	right:0;
+	background-color:red;
+	color:white;
+	border-radius:50%;
+	width:12px;
+	height:12px;
+	font-size:10px;
+	text-align:center;
+	z-index:5;
+}
+.box i{
+	font-size:30px;
+	z-index:-1;
+	cursor:pointer;
+}
+.card i{
+	position:absolute;
+	right:0;
+	bottom:0;
+	background-color:black;
+	color:white;
+	display:inline-block;
+	padding:10px;
+	font-size:20px;
+}
+.card-body{
+	padding:0 1rem ;
+}
+.card-body .card-title{
+	font-size:23px;
+}
+.card img{
+	transform:scale(0.7);
+}
+.card-items{
+	width:27%;
+	position:fixed;
+	top:0;
+	right:-100%;
+	height:100vh;
+    background-color:white;
+	z-index:100;
+	padding:15px;
+	box-shadow:0 0 10px #7777;
+}
+.card-active{
+	right:0;
+	transition:0.5s;
+}
+.card-items-container{
+	position:relative;
+	border-bottom:3px solid black;
+}
+.card-items h4{
+	margin:1.5rem auto;
+}
+.card-img-box{
+	width:20%;
+}
+.card-img-box img{
+	width:100%;
+}
+
+.card-img-box i{
+	padding:10px 0;
+}
+.quantity-box{
+	width:80px;
+	border:1px solid #7777;
+}
+.quantity-box .decr,
+.quantity-box .incr{
+	padding:3px 5px;
+	border:none;
+	background-color:white;
+}
+.quantity-box .decr{
+	border-right:1px solid #7777;
+}
+.quantity-box .incr{
+	border-left:1px solid #7777;
+}
+.card-items .delete-icon{
+	margin:auto 0;
+	color:red;
+	cursor:pointer;
+}
+.card-items .buy-now{
+	display:block;
+	background-color:#D90D1E;
+	color:white;
+	padding:10px;
+	border:none;
+	margin:0 auto;
+	border-radius:2px;
+}
+#close-btn{
+	position:absolute;
+	top:15px;
+	right:15px;
+	font-size:20px;
+	cursor:pointer;
+}
