@@ -4,6 +4,28 @@
 	box-sizing:border-box;
 	font-family: 'Poppins', sans-serif;
 }
+.done{
+	position:fixed;
+	display:none;
+	width:20%;
+	z-index:200;
+	top:-100%;
+	left:50%;
+	transform:translateX(-50%);
+	background-color:#18c018;
+	padding:5px 20px;
+	z-index:200;
+	border-radius:3px;
+}
+.done h5{
+	font-size:1.2rem;
+	color:#fff;
+	margin:0 0 0.5rem 0;
+}
+.active-done{
+	top:77px;
+	transition:0.5s;
+}
 .header{
 	background-color:black;
 	position:fixed;
@@ -49,7 +71,10 @@
 	z-index:-1;
 	cursor:pointer;
 }
-.card i{
+.card{
+	overflow:hidden;
+}
+.card .cart-add-icon{
 	position:absolute;
 	right:0;
 	bottom:0;
@@ -58,6 +83,11 @@
 	display:inline-block;
 	padding:10px;
 	font-size:20px;
+	cursor:pointer;
+}
+.card .cart-add-icon:hover{
+	background-color:#D90D1E;
+	transition:0.2s;
 }
 .card-body{
 	padding:0 1rem ;
@@ -65,8 +95,13 @@
 .card-body .card-title{
 	font-size:23px;
 }
-.card img{
+.card .cart-img{
 	transform:scale(0.7);
+	transition:0.4s ease;
+}
+.card .cart-img:hover{
+	transform:scale(1);
+	transition:0.4s ease;
 }
 .card-items{
 	width:27%;
@@ -82,6 +117,7 @@
 .card-active{
 	right:0;
 	transition:0.5s;
+	overflow-Y:auto;
 }
 .card-items-container{
 	position:relative;
@@ -90,19 +126,22 @@
 .card-items h4{
 	margin:1.5rem auto;
 }
-.card-img-box{
+.card-img-box, .price-box, .delete-icon{
 	width:20%;
 }
 .card-img-box img{
 	width:100%;
 }
-
 .card-img-box i{
 	padding:10px 0;
+}
+.pro-dtl{
+	width:40%;
 }
 .quantity-box{
 	width:80px;
 	border:1px solid #7777;
+	margin:1rem auto 0;
 }
 .quantity-box .decr,
 .quantity-box .incr{
@@ -120,6 +159,7 @@
 	margin:auto 0;
 	color:red;
 	cursor:pointer;
+	display:inline-block;
 }
 .card-items .buy-now{
 	display:block;

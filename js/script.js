@@ -1,3 +1,4 @@
+
 let data=[
 	{
 		id: 1,
@@ -10,6 +11,7 @@ let data=[
 		img:"images/shoe-02.webp",
 		productName: "Bast shoe",
 		price: 1200,
+		
 	},
 	{
 		id: 3,
@@ -48,8 +50,8 @@ let data=[
 		price: 450,
 	}
 ];
+var totals=0;
 var foodContainer = document.getElementById("product-container");
-
 
 for(i=0;i<data.length;i++){
 	foodContainer.innerHTML += `<div class="card m-2 position-relative">
@@ -75,11 +77,14 @@ btnClose.addEventListener("click", function(){
 	Cart.classList.remove("card-active")
 });
 
-// addto cart
+// add to cart
 var addCart = document.querySelectorAll(".cart-add-icon");
 addCart.forEach((btn)=>{
 	btn.addEventListener('click', addCard);
 })
+
+var cartCount = document.querySelector(".cart-number");
+let itemList =[],newProduct;
 
 function addCard(){
 	let food = this.parentNode;
@@ -87,23 +92,36 @@ function addCard(){
 	let price = food.querySelector(".price").innerText;
 	let imgSrc = food.querySelector(".cart-img").src;
 	
+	// check product already in cart
+	
+	newProduct = {title, price, imgSrc};
+
+	
+	if(itemList.find((el)=>el.title== newProduct.title)){
+		alert("product allredy added in cart");
+		return;
+	}else{
+		itemList.push(newProduct);
+		
+	}
+	cartCount.textContent = itemList.length;
+	
+	
 	createCartProudct(title, price, imgSrc);
 	
-	// let cartElement =document.createElement("div");
-	// cartElement.innerHTML =  newProductAdd;
-	// cartBasket = document.querySelector(".card-items-container");
-	// cartBasket.append(cartElement)
+	
+	 
 }
 var cartBasket = document.querySelector(".card-items-container");
 
 function createCartProudct(title, price, imgSrc){
 	cartBasket.innerHTML += `
-	<div class="card-box d-flex flex-wrap mb-1 justify-content-around">
+	<div class="card-box d-flex flex-wrap mb-1">
 		<div class="card-img-box">
 			<img class="card-img" src="${imgSrc}" alt="shoe img">
 		</div>
-		<div class="pro-dtl p-3">
-			<h5 class="mb-2">${title}</h5>
+		<div class="pro-dtl p-2">
+			<h5 class="product-title mb-2 text-center">${title}</h5>
 			<div class="quantity-box d-flex mt-3 justify-content-between">
 				<button class="decr" data-target="decr">-</button>
 				<span class="counter">1</span>
@@ -111,8 +129,8 @@ function createCartProudct(title, price, imgSrc){
 			</div>
 		</div>
 		<div class="price-box">
-			<p class="card-price my-3 inline-block ">${price}</p>
-			<p class="total-amt">${price}</p>
+			<p class="card-price my-3 inline-block text-center">${price}</p>
+			<p class="total-amt text-center">${price}</p>
 		</div>
 		<i class="icofont-ui-delete delete-icon"></i>
 	</div>`;
@@ -126,8 +144,8 @@ function createCartProudct(title, price, imgSrc){
 	for(let i = 0; i < decrementBtn.length; i++){ 
 		decrementBtn[i].addEventListener("click", quantity)
 	}
-	
-		
+	totals+=price
+	console.log(price)
 	
 	var btnremove = document.querySelectorAll(".delete-icon");
 		btnremove.forEach((btn)=>{
@@ -139,14 +157,21 @@ function createCartProudct(title, price, imgSrc){
 //delete cartlist
 function removeItem(){
 	if(confirm("are you sure to remove")){
-		this.parentElement.remove();
+		console.log(itemList);
+		let title = this.parentElement.parentElement.querySelector(".product-title").innerText;
+		itemList=itemList.filter((el)=>{
+			el.title != title
+		});
+		this.parentElement.remove();	
 	}
 }
 
 function quantity(qn){
-	let _parentNode, contr, prdTlPrice, prdInPrice;
-	
+
+	let _parentNode, contr, prdTlPrice, prdInPrice,prTotal,totalAmt,totalPrice=0,cnt=0;
 	if(qn.target.dataset.target == "incr"){
+	for (let i =0; i<itemList.length;i++){
+		
 		_parentNode = qn.target.parentNode.parentNode.parentNode;
 		contr = _parentNode.getElementsByClassName("counter")[0];
 		cnt = parseInt(contr.innerText);
@@ -156,6 +181,7 @@ function quantity(qn){
 		prdInPrice = _parentNode.getElementsByClassName("card-price")[0];
 		prCnt = cnt*prdInPrice.innerText.split("₹")[1];
 		prdTlPrice.innerText = "₹"+prCnt;
+	}
 	}
 	else if(qn.target.dataset.target == "decr"){
 		if(cnt > 1){
@@ -169,8 +195,18 @@ function quantity(qn){
 			prCnt = prdTlPrice.innerText.split("₹")[1]-prdInPrice.innerText.split("₹")[1];
 			prdTlPrice.innerText = "₹"+prCnt;
 		}else{
-			alert("Quantity should be max of 1")
-		}
-		
+			alert("Quantity should be max of 1");
+		}	
 	}
+}
+let buy = document.querySelector(".buy-now");
+let done = document.querySelector(".done");
+
+buy.addEventListener("click",function(){
+	setTimeout(popUp, 100)
+	done.classList.add("active-done");
+	done.style.display = "block";
+});
+function popUp(){
+	
 }
