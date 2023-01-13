@@ -39,12 +39,65 @@
 .header .container .logo{
 	color:white;
 }
+#search{
+	width:200px;
+	margin:0 20px 0 0 ;
+	border:none;
+	padding:0 10px;
+	font-size:1rem;
+	outline:none;
+}
 .carousel-inner{
 	height:100Vh;
 	position:static;
 }
 .carousel-item img{
 	height:100vh;
+}
+.banner-cont{
+	left:50%;
+	top:60%;
+	transform:translate(-50%,-50%);
+}
+.banner-cont p{
+	text-transform:uppercase;
+	font-weight:600;
+}
+.banner-cont h1{
+	text-transform:uppercase;
+	font-weight:700;
+	font-size:3.5rem;
+	border-style:dotted none dotted none;
+}
+.banner-cont a{
+	background-color:#D90D1E;
+	text-transform:uppercase;
+	text-decoration:none;
+	display:inline-block;
+	color:white;
+	padding:13px;
+	font-weight:700;
+	font-size:12px;
+	cursor:pointer;
+	border-radius:3px;
+	border:2px solid #D90D1E;
+	transition:all 0.3s ease;
+}
+.banner-cont a:hover{
+	background-color:transparent;
+	border-color:white;
+}
+.carousel-item{
+	position:relative;
+}
+.carousel-item:before{
+	content:"";
+	position:absolute;
+	background-color:rgba(0, 0, 0, 0.3);
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
 }
 .logo{
 	font-size:30px;
@@ -71,8 +124,69 @@
 	z-index:-1;
 	cursor:pointer;
 }
+.btn-group button{
+	width:100px;
+	height:30px;
+	border:none;
+	font-size:0.9rem;
+	background-color:#D90D1E;
+	color:#fff;
+	border:2px solid #D90D1E;
+	cursor:pointer;
+	border-radius:3px;
+	transition:all 0.3s ease;
+}
+.btn-group button:hover,
+.btn-group .select-active{
+	background-color:#fff;
+	color:#D90D1E;
+}
 .card{
 	overflow:hidden;
+}
+.slide-images{
+	width:33.33%;
+}
+.slide-name{
+	margin: 0 auto;
+	position: relative;
+}
+.slide-name::after{
+	content: "";
+	display: block;
+	position: absolute;
+	top: calc(50%);
+	width: 100%;
+	height: 1px;
+	background-color:#77777745;
+	z-index: -1;
+}
+.slide-name span{
+	position: relative;
+	background-color: #fff;
+	padding: 0 10px;
+}
+.slide img{
+	width:100%;
+}
+.pro-header{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+}
+.pro-header span{
+	background-color: #fff;
+	padding: 0 10px;
+}
+.pro-header::after{
+	content: "";
+	display: block;
+	position: absolute;
+	top: calc(50%);
+	width: 100%;
+	height: 1px;
+	background-color:#77777745;
+	z-index: -1;
 }
 .card .cart-add-icon{
 	position:absolute;
@@ -93,9 +207,10 @@
 	padding:0 1rem ;
 }
 .card-body .card-title{
-	font-size:23px;
+	font-size:20px;
 }
 .card .cart-img{
+	width:300px;
 	transform:scale(0.7);
 	transition:0.4s ease;
 }
